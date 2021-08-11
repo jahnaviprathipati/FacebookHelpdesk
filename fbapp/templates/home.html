@@ -1,0 +1,48 @@
+<style>
+    body{
+        background-color: rgb(151, 210, 233);
+        background: linear-gradient(90deg,#98d3b7  20%,  rgb(162, 214, 235)80%);
+        font-family: sans-serif;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid black;
+        text-align: left;
+        margin-left:40%;
+        border-spacing: 0;
+      }
+      th{
+          font-size: 30px;
+      }
+      td{
+          font-size: 25px;
+      }
+    a{
+        font-size: 30px;
+        color: white;
+        text-decoration: none;
+    }
+    a:hover{
+        transform: scale(1.5);
+        color: rgb(117, 117, 117);
+    }
+    .usernamestyle{
+        font-size: 50px;
+        Margin-left:70%;
+        color: black;
+    }
+    
+    </style>
+<h1>Conversations</h1>
+{%for key,val in alldata.items%}
+<!-- <h1>{{i}}</h1> -->
+{%for key2, val2 in val.items%}
+{%if key2 == 'username' %}
+
+<a href ="{%url 'get_messages' data=val2 %} ">{{val2}}</a>
+
+{%endif%}
+{%endfor%}
+<br>
+{%endfor%}

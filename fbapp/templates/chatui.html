@@ -1,0 +1,116 @@
+<style>
+    body{
+        background-color: rgb(151, 210, 233);
+        background: linear-gradient(90deg,#98d3b7  20%,  rgb(162, 214, 235)80%);
+        font-family: sans-serif;
+    }
+    table {
+        width: 50%;
+        vertical-align:top;
+        border-collapse: collapse;
+        border: 1px solid rgb(129, 214, 172);
+        border-width: 10px;
+        text-align: left;
+        margin-left:50%;
+
+    }
+      th{
+          font-size: 30px;
+      }
+      td{
+          font-size: 25px;
+      }
+    a{
+        font-size: 30px;
+        color: white;
+        text-decoration: none;
+    }
+    a:hover{
+        transform: scale(1.5);
+        color: rgb(117, 117, 117);
+    }
+    .usernamestyle{
+        font-size: 50px;
+        Margin-left:70%;
+        color: black;
+    }
+    .search {
+        width: 100%;
+        height: 60px;
+        display: flex;
+      }
+      
+      .searchTerm {
+        width: 40%;
+        border: 3px solid rgb(129, 214, 172);
+        border-right: none;
+        padding: 5px;
+        height: 20px;
+        margin-left: 51%;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: black;
+      }
+      
+      .searchTerm:focus{
+        color: black;
+      }
+      
+      .searchButton {
+        width: 40px;
+        height: 19.5px;
+        border: 1px solid rgb(129, 214, 172);
+        background: rgb(129, 214, 172);
+        text-align: center;
+        color: black;
+        
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 15px;
+      }
+      
+      /*Resize the wrap to see the search bar change!*/
+      .wrap{
+        width: 50%;
+        position: absolute;
+        top: 58%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+<h1>Conversations</h1>
+<span class = 'conversation'>
+{%for key,val in alldata.items%}
+<!-- <h1>{{i}}</h1> -->
+{%for key2, val2 in val.items%}
+{%if key2 == 'username' %}
+
+<a href ="{%url 'get_messages' data=val2 %} ">{{val2}}</a>
+
+{%endif%}
+{%endfor%}
+<br>
+{%endfor%}
+</span>
+<b class='usernamestyle'>{{user}}</b>
+<table>
+        <th>Message</th>
+        <th>Timestamp</th>
+    {%for i in msgs%}
+<tr>
+<td>{{i.0}}</td>
+<td>{{i.1}}</td>
+</tr>
+<br>
+{%endfor%}
+</table>
+
+<div class="wrap">
+    <div class="search">
+       <input type="text" class="searchTerm" placeholder="Type to reply">
+       <button type="submit" class="searchButton" >
+         <i class="fa fa-search"></i>
+         >
+      </button>
+    </div>
+ </div>
